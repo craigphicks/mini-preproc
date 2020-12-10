@@ -17,7 +17,7 @@ MiniPreproc
 
 Suppose an input file `./demo-test.txt` with content:
 ```text
-<stuff before>
+...before
 //--IF{{RELEASE}}
 //--const someModule=require('some-module');
 //--const RELEASE_MODE=true;
@@ -26,7 +26,7 @@ const someModule=require('./some-module.js');
 const RELEASE_MODE=false;
 //--ENDIF
 //--STOP
-<stuff after>
+...after
 ```
 The following example CLI program `demo.js` pipes `stdin` through `miniPreproc`, to `stdout`, while passing CLI parameters to `miniPreproc`.  
 ```js
@@ -142,7 +142,7 @@ Consider:
     ```
 
 - examples of `<text-block-*> with '//--' line prefixes removed`
-  - Has
+  - Case: Has `//--` prefix
   ```
   //--xxxx
   ```
@@ -150,7 +150,7 @@ Consider:
   ```
   xxx
   ```
-  - Already doesn't have
+  - Case: Already doesn't have `//--` prefix
   ```
   yyyy
   ```
@@ -159,7 +159,7 @@ Consider:
   yyyy
   ```
 - examples of `<text-block-false> with '//--' line prefixes required`
-  - Already has
+  - Case: Already has `//--` prefix
   ```
   //--xxxx
   ```
@@ -167,7 +167,7 @@ Consider:
   ```
   //--xxxx
   ```
-  - Doesn't have
+  - Case: Doesn't have `//--` prefix
   ```
   yyyy
   ```
