@@ -1,5 +1,5 @@
 ...before
-//--IF{{RELEASE}}
+//--IF
 //--const someModule=require('some-module');
 //--const RELEASE_MODE=true;
 //--ELSE
