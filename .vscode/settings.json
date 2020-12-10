@@ -1,0 +1,8 @@
+{
+    "debug.javascript.terminalOptions": {
+    
+    },
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.wrappingIndent": "deepIndent"
+}

@@ -1,0 +1,14 @@
+//aaaaaaaaaaaaa
+//bbbbbbbbbbbbb
+//--IF{{RELEASE}}
+//--// ordinary comment 1
+//--const someModule=require('some-module');
+//--ELSE
+// ordinary comment 2
+const someModule=require('./some-module.js');
+//--ENDIF
+//--STOP
+//ccccccccccccc
+//ddddddddddddd
+// after STOP, no more preproc takes place
+//--IF this is not an error after STOP 

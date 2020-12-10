@@ -1,0 +1,11 @@
+{
+  "name": "mini-preproc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mini-preproc.js",
+  "scripts": {
+    "test": "node test-mini-preproc.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

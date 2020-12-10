@@ -1,0 +1,12 @@
+
+//aaaaaaaaaaaaa
+//bbbbbbbbbbbbb
+//--IF{{RELEASE}}
+//--// ordinary comment 1
+//--const jsLci=require('jsLci');
+//--ELSE
+// ordinary comment 2
+const jsLci=require('..index');
+//--ENDIF
+//ccccccccccccc
+//ddddddddddddd

@@ -1,0 +1,7 @@
+*~
+.emacs*
+node_modules/
+tmp.*
+*.tmp
+tmp/
+
