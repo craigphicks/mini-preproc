@@ -97,10 +97,23 @@ Consider:
     //--ENDIF
     ```
 - else if `(<key> in defines)` evaluates to false
-  - Same as above with `<text-block-true>` and `<text-block-false>` exchanged.
+  - If `options.strip` evaluates to true
+    - Output 
+    ```
+    <<text-block-false>> with any `//--` line prefixes removed 
+    ```
+  - else if `options.strip` evaluates to true
+    - Output 
+    ```
+    //--IF{{<key>}} 
+    <text-block-true> with '//--' line prefixes required
+    //--ELSE
+    <text-block-false> with '//--' line prefixes removed
+    //--ENDIF
+    ```
 
-- examples of `<text-block-true> with '//--' line prefixes removed`
-  - 
+- examples of `<text-block-*> with '//--' line prefixes removed`
+  - Has
   ```
   //--xxxx
   ```
@@ -108,7 +121,7 @@ Consider:
   ```
   xxx
   ```
-  - 
+  - Already doesn't have
   ```
   yyyy
   ```
@@ -117,7 +130,7 @@ Consider:
   yyyy
   ```
 - examples of `<text-block-false> with '//--' line prefixes required`
-  - 
+  - Already has
   ```
   //--xxxx
   ```
@@ -125,7 +138,7 @@ Consider:
   ```
   //--xxxx
   ```
-  - 
+  - Doesn't have
   ```
   yyyy
   ```
