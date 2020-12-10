@@ -31,7 +31,7 @@ const RELEASE_MODE=false;
 The following example CLI program `demo.js` pipes `stdin` through `miniPreproc`, to `stdout`, while passing CLI parameters to `miniPreproc`.  
 ```js
 'use strict';
-const preproc=require('./mini-preproc.js');
+const preproc=require('mini-preproc');
 async function mpp(defines,strip){
   process.stdin.pipe(
     preproc.createPreprocStream(
