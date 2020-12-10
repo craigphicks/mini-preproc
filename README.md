@@ -57,7 +57,8 @@ The resulting output is:
 ```
 ```
 
-*WARNING: [In the vscode debugger, output to process.stdout is NOT normally shown in the 'DEBUG CONSOLE' window.](#printing-to-process.stdout-from-vscode-in-debug-mode)*
+*WARNING: [In the vscode debugger, output to process.stdout is NOT normally shown in the 'DEBUG CONSOLE' window.](#printing-to-process
+stdout-from-vscode-in-debug-mode)*
 
 # API 
 - import 
