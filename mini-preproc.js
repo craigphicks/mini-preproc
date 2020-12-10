@@ -60,7 +60,7 @@ class State{
 
 
 function createPreprocStream(defs,opts){                                                                      
-  let xstream=new stream.Transform({objectMode:true});
+  let xstream=new stream.Transform({objectMode:true,emitClose:true});
   xstream._state=new State(defs,opts);
   xstream._transform=function(chunk,_enc,callback){
     if (this._state.isDone()){

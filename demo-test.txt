@@ -1,11 +1,13 @@
 //aaaaaaaaaaaaa
 //bbbbbbbbbbbbb
-//--IF{{RELEASE}}
+//--IF{{RELEASE}} text after end of cmd ignored
 //--// ordinary comment 1
 //--const someModule=require('some-module');
+//--const RELEASE_MODE=true;
 //--ELSE
 // ordinary comment 2
 const someModule=require('./some-module.js');
+const RELEASE_MODE=true;
 //--ENDIF
 //--STOP
 //ccccccccccccc
