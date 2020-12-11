@@ -13,6 +13,12 @@ MiniPreproc
 - When `strip` is false, the preproccer output can be run through the preprocessor again with any `defines` and yield the correct result (\*).
   - *\*Yes, it is possible to write input which confuses the preprocessor (e.g. extra `//--`), however that is only possible before the first `STOP` command, so it is not a problem in practice.**
 
+# Install
+`mini-preproc` would most likely be used as a dev tool, so installation as a dev depency is demonstrated:
+```
+npm install mini-preproc --save-dev
+```
+
 # Example
 
 Suppose an input file `./demo-test.txt` with content:

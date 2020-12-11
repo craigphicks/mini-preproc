@@ -13,7 +13,7 @@
     "url": "git+https://github.com/craigphicks/mini-preproc.git"
   },
   "keywords": [
-    "node stream", "preprocessor"
+    "nodejs", "preprocessor", "transform-stream", "stream", "transform"
   ],
   "bugs": {
     "url": "https://github.com/craigphicks/mini-preproc/issues"
