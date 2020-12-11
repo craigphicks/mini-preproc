@@ -1,6 +1,6 @@
 {
   "name": "mini-preproc",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple, light, and fast text preprocessor implemented as a node transform stream.",
   "main": "mini-preproc.js",
   "scripts": {
@@ -13,7 +13,11 @@
     "url": "git+https://github.com/craigphicks/mini-preproc.git"
   },
   "keywords": [
-    "nodejs", "preprocessor", "transform-stream", "stream", "transform"
+    "nodejs",
+    "preprocessor",
+    "transform-stream",
+    "stream",
+    "transform"
   ],
   "bugs": {
     "url": "https://github.com/craigphicks/mini-preproc/issues"
