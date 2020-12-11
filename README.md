@@ -34,7 +34,7 @@ const RELEASE_MODE=false;
 //--STOP
 ...after
 ```
-The following example CLI program `demo.js` pipes `stdin` through `miniPreproc`, to `stdout`, while passing CLI parameters to `miniPreproc`.  
+The following example CLI program `demo-cli.js` pipes `stdin` through `miniPreproc`, to `stdout`, while passing CLI parameters to `miniPreproc`.  
 ```js
 'use strict';
 const preproc=require('mini-preproc');
