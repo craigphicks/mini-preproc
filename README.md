@@ -95,11 +95,11 @@ const RELEASE_MODE=true;
   - `defines` is an object containing zero or more property-value pairs which are used to evaluate the preprocessor `IF` conditions in the stream's input text. An absent property evaluates to `false`.  Other values are converted to `true` or `false` according to normal javascript rules
     - See [Preprocessor syntax](#preprocessor-syntax) for details about preprocesser directives.  
   - `options` has a single valid property: `strip`.  When `strip` is true all the command lines are removed from output. Otherwise they remain. 
-  - the returned stream may throw an error on illegal preprocessor syntax.  [How to catch a stream error](#how-to-catch-a-stream-error) in the appendix shows one way to handle that. 
+  - the returned stream may throw an error on illegal preprocessor syntax.  The error is of type `MiniPreprocError`, derived from type `Error`. 
 
 ## Preprocessor syntax
 - All directives are on a single line, `//--<directive>` with no spaces before `//--`, and `<directive>` in [`IF`,`ELSE`,`ENDIF`,`STOP`].
-- Any text outside of `IF-ELSE-ENDIF` block lines is passed through.
+- Any text outside of an `IF-ELSE-ENDIF` block of lines is passed through.
 - Any text after the first `STOP` directive line is passed through.
 
 Consider:
