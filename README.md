@@ -7,11 +7,12 @@ MiniPreproc
 - A simple, light, and fast text preprocessor implemented as a node transform stream.
 - Speed is ensured by only pre-processing upto a `STOP` command.  After the `STOP` command, the MiniPreproc transform stream stops parsing lines and simply passes each "chunk" to output with no processing.  That is as fast a transform stream can possibly work.
 - The available commands are `IF`, `ELSE`, `ENDIF`, and `STOP`.  Only one level of IF condition is allowed.
+- An `IF` command is followed by a property: `IF{{<key>}}`, with true/false looked up in dictionary passed in by the caller.  
 - Each command must be prefixed by `//--` from the start of the line, with no spaces before the command. (Currently the choice of prefix is fixed.)
 - There is a progmatic interface `createPreprocStream`. (Currently there is no CLI interface provided).  See API section for details.
 - The `strip` option allows all directives to be removed, so the output looks clean.
 - When `strip` is false, the preproccer output can be run through the preprocessor again with any `defines` and yield the correct result (\*).
-  - *\*Yes, it is possible to write input which confuses the preprocessor (e.g. extra `//--`), however that is only possible before the first `STOP` command, so it is not a problem in practice.**
+  - *\*Yes, it is possible to write input which confuses the preprocessor (e.g. extra `//--`), however that is only possible before the first `STOP` command, so it is not a problem in practice.*
 
 # Install
 `mini-preproc` would most likely be used as a dev tool, so installation as a dev depency is demonstrated:
@@ -34,7 +35,7 @@ const RELEASE_MODE=false;
 //--STOP
 ...after
 ```
-The following example CLI program `demo-cli.js` pipes `stdin` through `miniPreproc`, to `stdout`, while passing CLI parameters to `miniPreproc`.  
+The following example CLI program `demo-cli.js` pipes `stdin` through `preproc`, to `stdout`, while passing CLI parameters to `preproc`.  
 ```js
 'use strict';
 const preproc=require('mini-preproc');
@@ -101,7 +102,7 @@ const RELEASE_MODE=true;
   - `defines` is an object containing zero or more property-value pairs which are used to evaluate the preprocessor `IF` conditions in the stream's input text. An absent property evaluates to `false`.  Other values are converted to `true` or `false` according to normal javascript rules
     - See [Preprocessor syntax](#preprocessor-syntax) for details about preprocesser directives.  
   - `options` has a single valid property: `strip`.  When `strip` is true all the command lines are removed from output. Otherwise they remain. 
-  - the returned stream may throw an error on illegal preprocessor syntax.  The error is of type `MiniPreprocError`, derived from type `Error`. 
+  - the returned stream may throw an error on illegal preprocessor syntax.  The error is of class `MiniPreprocError`, derived from type `Error`. 
 
 ## Preprocessor syntax
 - All directives are on a single line, `//--<directive>` with no spaces before `//--`, and `<directive>` in [`IF`,`ELSE`,`ENDIF`,`STOP`].
@@ -122,7 +123,7 @@ Consider:
     ```
     <<text-block-true>> with any `//--` line prefixes removed 
     ```
-  - else if `options.strip` evaluates to true
+  - else if `options.strip` evaluates to false
     - Output 
     ```
     //--IF{{<key>}} 
@@ -137,7 +138,7 @@ Consider:
     ```
     <<text-block-false>> with any `//--` line prefixes removed 
     ```
-  - else if `options.strip` evaluates to true
+  - else if `options.strip` evaluates to false
     - Output 
     ```
     //--IF{{<key>}} 
