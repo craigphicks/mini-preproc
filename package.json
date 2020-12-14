@@ -4,7 +4,7 @@
   "description": "A simple, light, and fast text preprocessor implemented as a node transform stream.",
   "main": "mini-preproc.js",
   "scripts": {
-    "test": "node test-mini-preproc.js"
+    "test": "node test-mini-preproc.js && node test-stream.js"
   },
   "author": "craigphicks",
   "license": "ISC",
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/craigphicks/mini-preproc/issues"
   },
-  "homepage": "https://github.com/craigphicks/mini-preproc#readme"
+  "homepage": "https://github.com/craigphicks/mini-preproc#readme",
+  "devDependencies": {
+    "concat-stream": "^2.0.0"
+  }
 }
