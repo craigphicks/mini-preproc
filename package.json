@@ -1,6 +1,6 @@
 {
   "name": "mini-preproc",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple, light, and fast text preprocessor implemented as a node transform stream.",
   "main": "mini-preproc.js",
   "scripts": {
