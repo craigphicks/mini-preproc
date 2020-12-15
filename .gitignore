@@ -4,4 +4,11 @@ node_modules/
 tmp.*
 *.tmp
 tmp/
+dist/
+tests/*.d.ts
+tests/*.js
+tests/*.js.map
+examples/src-ts/*.js
+examples/src-ts/*.js.map
+
 

@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node10/tsconfig.json",
+
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "skipLibCheck": false,
+    "sourceMap": true,
+  },
+  "files": ["./demo-cli.ts"],
+}

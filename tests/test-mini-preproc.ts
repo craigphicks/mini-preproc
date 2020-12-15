@@ -1,15 +1,15 @@
-#!/usr/bin/env node
 'strict';
+export{}// to stop typescript warning about duplicate declarations
 
-const preproc = require('./mini-preproc.js');
-const fs = require('fs');
+import preproc = require('../dist/mini-preproc');
+import fs = require('fs');
 //const path = require('path');
-const assert=require('assert');
-const testText=require('./test-text.js');
+import assert=require('assert');
+import testText=require('./test-text');
 //const stream = require('stream');
 //const pipe=stream.pipe;
 
-function assertSame(fnact,fnexp){
+function assertSame(fnact:string,fnexp:string){
   assert.deepStrictEqual(
     fs.readFileSync(fnact,'utf8').split('\n'),
     fs.readFileSync(fnexp,'utf8').split('\n')
@@ -20,7 +20,8 @@ function assertSame(fnact,fnexp){
 async function main(){
   fs.mkdirSync('/tmp/test-mini-preproc/',{recursive:true});
   let tmpdir=fs.mkdtempSync('/tmp/test-mini-preproc/');
-  fs.mkdirSync('./test-data/',{recursive:true});
+  let testDataDir='./tests/test-data';
+  fs.mkdirSync(testDataDir,{recursive:true});
   let fnin=tmpdir+'/preprocIn.txt';
   fs.writeFileSync(fnin,testText.getInputText());
 
@@ -36,34 +37,26 @@ async function main(){
       //let fnout = `./tmp/preproc-RELEASE-${RELEASE}-strip-${strip}.out`;
       let sIn=fs.createReadStream(fnin,{emitClose:true});
       let sOut=fs.createWriteStream(fnActual,{emitClose:true});
-      let resolve,reject;
+      let resolve:Function,reject:Function;
       let pr = new Promise((res,rej)=>{resolve=res;reject=rej;});
-      let resolver=(v)=>{
+      let resolver=(v:any)=>{
         resolve(v);
       };
-      let rejecter=(e)=>{
+      let rejecter=(e:any)=>{
         reject(e);
       };
-      // let logger=(name)=>{
-      //   return (x)=>{
-      //     console.log(name+(x?':'+JSON.stringify(x):''));
-      //   };
-      // };
       sIn.pipe(
         preproc.createPreprocStream(
           {RELEASE:RELEASE},{strip:strip})
           .on('error',rejecter)
-          //.on('close',logger('preproc close'))
       ).pipe(
         sOut
           .on('error',rejecter)
-          //.on('close',logger('out close'))
       )
-        //.on('close',logger('pipe close'))
         .on('close',resolver)
         .on('error',rejecter);
       await pr;
-      let fnExpect=`./test-data/${fnbase}-expected.txt`;
+      let fnExpect=`${testDataDir}/${fnbase}-expected.txt`;
       if (fs.existsSync(fnExpect) && !doWriteExpected){
         try { assertSame(fnActual,fnExpect); }
         catch(e) { 

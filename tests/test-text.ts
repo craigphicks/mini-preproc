@@ -1,6 +1,6 @@
 'use strict';
 
-function getInputText(){
+function getInputText():string{
   return  `\
 //aaaaaaaaaaaaa
 //bbbbbbbbbbbbb
@@ -26,5 +26,5 @@ const jsLci=require('..index');
 
 `;
 }
-
-module.exports.getInputText=getInputText;
+export {getInputText}
+//module.exports.getInputText=getInputText;
