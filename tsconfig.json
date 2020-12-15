@@ -1,0 +1,16 @@
+
+{
+  "extends": "@tsconfig/node10/tsconfig.json",
+
+  "compilerOptions": {
+    "declaration": true,
+    "noImplicitAny": true,
+    "skipLibCheck": false,
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "files":[
+    "src/index.ts",
+    "src/mini-preproc.ts"
+  ]
+}

@@ -1,10 +1,19 @@
 {
   "name": "mini-preproc",
-  "version": "1.0.5",
+  "version": "1.0.6-ts",
   "description": "A simple, light, and fast text preprocessor implemented as a node transform stream.",
-  "main": "mini-preproc.js",
+  "main": "dist/mini-preproc.js",
+  "files": [
+    "src/*",
+    "examples/**/*",
+    "dist/*"
+  ],
   "scripts": {
-    "test": "node test-mini-preproc.js && node test-stream.js"
+    "test": "node run-tests.js",
+    "clean-tests": "rm -f tests/*.js",
+    "build-dist": "rm -f dist/* ; tsc",
+    "watch-dist": "tsc -w",
+    "clean-dist": "rm -f dist/*"
   },
   "author": "craigphicks",
   "license": "ISC",
@@ -24,6 +33,11 @@
   },
   "homepage": "https://github.com/craigphicks/mini-preproc#readme",
   "devDependencies": {
-    "concat-stream": "^2.0.0"
+    "@tsconfig/node10": "^1.0.7",
+    "@types/node": "^14.14.14"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=10.13.0"
   }
 }

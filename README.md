@@ -35,21 +35,25 @@ const RELEASE_MODE=false;
 //--STOP
 ...after
 ```
-The following example CLI program `demo-cli.js` pipes `stdin` through `preproc`, to `stdout`, while passing CLI parameters to `preproc`.  
+The following example CLI program `demo-cli.js` pipes `stdin` through the stream created by `createPreprocStream`, to `stdout`, while also passing CLI parameters to that stream.  
 ```js
 'use strict';
-const preproc=require('mini-preproc');
+const {createPreprocStream}=require('mini-preproc');
 async function mpp(defines,strip){
   process.stdin.pipe(
-    preproc.createPreprocStream(
+    createPreprocStream(
       defines,{strip:strip}))
-    .on('error',(e)=>{ console.log(e.message);})      
+    .on('error',(e)=>{
+      console.error(e.message);
+      process.exitCode=1;
+    })
     .pipe(process.stdout);
 }
 var defines=JSON.parse(process.argv[2]);
 var strip=!!JSON.parse(process.argv[3]);
 mpp(defines,strip);
 ```
+
 Some runs of the program:
 ```
 $ node demo-cli.js '{"RELEASE":true}' true < ./demo-test.txt
@@ -91,6 +95,11 @@ const RELEASE_MODE=true;
 //--STOP
 ...after
 ```
+The above program is included with the `mini-preproc` module at
+`node_modules/mini-preproc/examples/src-js/demo-cli.js`
+
+A typescript version of the program is [listed in the appendix](#typescript-version-of-the-example-program) and is included with the `mini-preproc` module at
+`node_modules/mini-preproc/examples/src-ts/demo-cli.ts`
 
 *WARNING: [In the vscode debugger, output to process.stdout is NOT normally shown in the 'DEBUG CONSOLE' window.](#printing-to-processstdout-from-vscode-in-debug-mode)*
 
@@ -183,6 +192,43 @@ Consider:
   //--yyyy
   ```
 
+# Typescript
+
+The typescript declaration are bundled with the package.  (They are not provided seperately under npm @types).
+
+An example typescript program using the `mini-preproc` typescript delared argument types is [listed in the appendix](#typescript-version-of-the-example-program).  
+
+# version changes
+## 1.0.7
+- typescript definitions added
+- example programs added
+  - nod_modules/mini-preproc/examples/
+    - src-js/demo-cli.js
+    - src-ts/demo-cli.ts
+- supports "node": ">=10.13.0"
+
 # Appendix
 ## Printing to process.stdout from vscode in debug mode.
 When a program is started by the `vscode` debugger, output to `process.stdout` is NOT shown in the 'DEBUG CONSOLE' window.  See 'outputCapture' at https://code.visualstudio.com/docs/nodejs/nodejs-debugging . However, the easiest solution is to start the program from outside the debugger with `node --inspect-brk my-prog.js` and then attach that process from vscode - the output to `process.stdout` will then show correctly in the terminal from which node was invoked.
+
+## Typescript version of the example program
+Included with the `mini-preproc` module at
+`node_modules/mini-preproc/examples/src-ts/demo-cli.ts`
+
+```typescript
+'use strict'
+import mpp=require('mini-preproc'); 
+async function mppCli(defines:mpp.Defs,strip:boolean){
+  process.stdin.pipe(
+    mpp.createPreprocStream(
+      defines,{strip:strip}))
+    .on('error',(e)=>{
+      console.error(e.message);
+      process.exitCode=1;
+    })
+    .pipe(process.stdout);
+}
+var defines=JSON.parse(process.argv[2]);
+var strip=!!JSON.parse(process.argv[3]);
+mppCli(defines,strip);
+```
