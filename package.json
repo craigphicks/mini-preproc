@@ -5,7 +5,6 @@
   "main": "dist/mini-preproc.js",
   "files": [
     "src/*",
-    "examples/**/*",
     "dist/*"
   ],
   "scripts": {

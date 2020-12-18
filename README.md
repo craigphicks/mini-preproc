@@ -95,13 +95,10 @@ const RELEASE_MODE=true;
 //--STOP
 ...after
 ```
-The above program is included with the `mini-preproc` module at
-`node_modules/mini-preproc/examples/src-js/demo-cli.js`
 
-A typescript version of the program is [listed in the appendix](#typescript-version-of-the-example-program) and is included with the `mini-preproc` module at
-`node_modules/mini-preproc/examples/src-ts/demo-cli.ts`
+A typescript version of the program is [listed in the appendix](#typescript-version-of-the-example-program)
 
-*WARNING: [In the vscode debugger, output to process.stdout is NOT normally shown in the 'DEBUG CONSOLE' window.](#printing-to-processstdout-from-vscode-in-debug-mode)*
+*WARNING: [If using vscode debugger, output to process.stdout is NOT normally shown in the 'DEBUG CONSOLE' window.](#printing-to-processstdout-from-vscode-in-debug-mode)*
 
 # API 
 - import 
@@ -201,10 +198,6 @@ An example typescript program using the `mini-preproc` typescript delared argume
 # version changes
 ## 1.1.0
 - typescript definitions added
-- example programs added
-  - nod_modules/mini-preproc/examples/
-    - src-js/demo-cli.js
-    - src-ts/demo-cli.ts
 - supports "node": ">=10.13.0"
 
 # Appendix
@@ -212,8 +205,6 @@ An example typescript program using the `mini-preproc` typescript delared argume
 When a program is started by the `vscode` debugger, output to `process.stdout` is NOT shown in the 'DEBUG CONSOLE' window.  See 'outputCapture' at https://code.visualstudio.com/docs/nodejs/nodejs-debugging . However, the easiest solution is to start the program from outside the debugger with `node --inspect-brk my-prog.js` and then attach that process from vscode - the output to `process.stdout` will then show correctly in the terminal from which node was invoked.
 
 ## Typescript version of the example program
-Included with the `mini-preproc` module at
-`node_modules/mini-preproc/examples/src-ts/demo-cli.ts`
 
 ```typescript
 'use strict'
