@@ -199,7 +199,7 @@ The typescript declaration are bundled with the package.  (They are not provided
 An example typescript program using the `mini-preproc` typescript delared argument types is [listed in the appendix](#typescript-version-of-the-example-program).  
 
 # version changes
-## 1.0.7
+## 1.1.0
 - typescript definitions added
 - example programs added
   - nod_modules/mini-preproc/examples/
